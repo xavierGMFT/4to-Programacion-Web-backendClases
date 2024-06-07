@@ -10,3 +10,4 @@ export class AppController {
     return this.appService.getHello();
   }
 }
+//Los controladores nos sirven para dar soporte o responder las solicitudes al servidor
