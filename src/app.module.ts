@@ -3,6 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ProductsController } from './products/products.controller';
+import { ProductsService } from './products/products.service';
+import { ProductsModule } from './products/products.module';
+import { TagsModule } from './tags/tags.module';
+
 
 @Module({
   imports: [
@@ -19,9 +24,11 @@ import { AppService } from './app.service';
       entities: [__dirname + '/**/*.entity{.ts,.js}'], // Ajusta esta ruta según la estructura de tu proyecto
       synchronize: true, // Solo para desarrollo, desactiva en producción
     }),
+    ProductsModule,
+    TagsModule,
     // Otros módulos que necesites importar
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, ProductsController],
+  providers: [AppService, ProductsService],
 })
 export class AppModule {}
